@@ -247,7 +247,7 @@ All requests use native `fetch` — no Axios, no React Query. Authentication use
 | Notification preferences | `GET / PUT /api/v1/notification-preferences`                             | api-key + X-Device-Token |
 | Config/filter options    | `GET /api/v1/agencies` · `/api/v1/locations` · `/api/v1/launch-statuses` | api-key                  |
 
-> **Why device tokens instead of user accounts?** OrbitQ requires no login. All per-user personalisation — tracking lists, notification preferences, auto-track rules — are keyed to the device's push token, which is stored in AsyncStorage after the first permission grant. This eliminates account management complexity entirely. The tradeoff is that tracking state is non-transferable across devices. See [orbitq-api-docs](https://github.com/jamus/orbitq-api-docs) for the server-side implementation of device-scoped resources.
+> **Why device tokens instead of user accounts?** OrbitQ requires no login. All per-user personalisation — tracking lists, notification preferences, auto-track rules — are keyed to the device's push token. The token is obtained on first use (when the user tracks a launch or enables notifications), persisted locally via redux-persist, and used on every subsequent app launch to re-sync tracking state from the server. This eliminates account management complexity entirely. The tradeoff is that tracking state is non-transferable across devices. See [orbitq-api-docs](https://github.com/jamus/orbitq-api-docs) for the server-side implementation of device-scoped resources.
 
 ---
 
@@ -265,7 +265,8 @@ Components are organized in three layers:
 
 ## Design System
 
-The app is permanently dark-mode (`userInterfaceStyle: 'dark'` in `app.config.ts`). All design tokens are defined in `constants/theme.ts`.
+All design tokens are defined in `constants/theme.ts`.
+A naive Tailwind like approach that will be replaced when it starts to feel painful.
 
 **Typography** — two custom font families:
 
@@ -301,21 +302,6 @@ npm run update:production   # → production branch
 ```
 
 Updates are tied to `appVersion` (runtime policy), so a JS update only reaches users on the matching app version.
-
----
-
-## Local Development
-
-Copy `.env.example` to `.env` and populate `ORBITQ_API_KEY`. Then:
-
-```sh
-npm install
-npm run dev          # Start with APP_VARIANT=development
-```
-
-For physical device testing, `services/api/config.ts` reads `Constants.expoConfig.hostUri` to resolve the local machine's IP automatically. No manual IP configuration is needed as long as the device and development machine are on the same network.
-
-Redux DevTools are available in development via the `redux-devtools-expo-dev-plugin` — open Expo Dev Client and navigate to the Redux tab.
 
 ---
 
