@@ -212,6 +212,10 @@ On press, `handleManualPress` checks subscription, ensures a device token exists
 
 Users configure agency and/or launch site filter rules in settings; the server monitors upcoming launches against these rules and automatically tracks matching ones. Auto-tracked launches show a sparkle icon in place of the standard track icon. Tapping an auto-tracked button routes to the Auto-Tracking settings screen rather than toggling, preventing accidental removal of server-managed tracking.
 
+<img src="images/screenshot-11.png" width="220" alt="Auto-Tracking" />
+<img src="images/screenshot-12.png" width="220" alt="Auto-Tracking" />
+<img src="images/screenshot-13.png" width="220" alt="Auto-Tracking" />
+
 ### Notification Preferences
 
 Five per-type toggles for tracked launches: 24-hour warning, 1-hour warning, 5-minute warning, status update, and schedule change. The UI uses optimistic updates — current preferences are saved to a local rollback variable before the `PUT` request, and restored on failure.
