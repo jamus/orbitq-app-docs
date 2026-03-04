@@ -5,13 +5,15 @@
 The OrbitQ mobile client — a React Native app for tracking rocket launches, receiving push notifications, and exploring mission details. This document covers the app's architecture, state design, features, and build system. For the backend that powers it, see [orbitq-api-docs](https://github.com/jamus/orbitq-api-docs).
 
 <figure align="center">
-  <img src="images/screenshot-1.png" width="160" alt="Launch detail" />
-  <img src="images/screenshot-2.png" width="160" alt="Future launches list" />
-  <img src="images/screenshot-3.png" width="160" alt="Detailed mission info" />
-  <img src="images/screenshot-4.png" width="160" alt="Timelines and stream links" />
-  <img src="images/screenshot-5.png" width="160" alt="Launch crew data" />
-  <img src="images/screenshot-6.png" width="160" alt="Pro notifications" />
-  <figcaption>Launch detail · Future launches · Mission info · Timeline & streams · Crew · Pro notifications</figcaption>
+  <img src="images/screenshot-1.png" width="130" alt="Launch detail">
+  <img src="images/screenshot-2.png" width="130" alt="Future launches list">
+  <img src="images/screenshot-3.png" width="130" alt="Detailed mission info">
+  <img src="images/screenshot-4.png" width="130" alt="Timelines and stream links">
+  <img src="images/screenshot-5.png" width="130" alt="Launch crew data">
+  <img src="images/screenshot-6.png" width="130" alt="Pro notifications">
+  <figcaption>
+    Launch detail · Future launches · Mission info · Timeline & streams · Crew · Pro notifications
+  </figcaption>
 </figure>
 
 ---
