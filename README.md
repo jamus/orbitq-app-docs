@@ -4,17 +4,20 @@
 
 The OrbitQ mobile client — a React Native app for tracking rocket launches, receiving push notifications, and exploring mission details. This document covers the app's architecture, state design, features, and build system. For the backend that powers it, see [orbitq-api-docs](https://github.com/jamus/orbitq-api-docs).
 
-<figure align="center">
-  <img src="images/screenshot-1.png" width="130" alt="Launch detail">
-  <img src="images/screenshot-2.png" width="130" alt="Future launches list">
-  <img src="images/screenshot-3.png" width="130" alt="Detailed mission info">
-  <img src="images/screenshot-4.png" width="130" alt="Timelines and stream links">
-  <img src="images/screenshot-5.png" width="130" alt="Launch crew data">
-  <img src="images/screenshot-6.png" width="130" alt="Pro notifications">
-  <figcaption>
+<div align="center">
+  <img src="images/screenshot-1.png" width="130" alt="Launch detail" />
+  <img src="images/screenshot-2.png" width="130" alt="Future launches list" />
+  <img src="images/screenshot-3.png" width="130" alt="Detailed mission info" />
+  <img src="images/screenshot-4.png" width="130" alt="Timelines and stream links" />
+  <img src="images/screenshot-5.png" width="130" alt="Launch crew data" />
+  <img src="images/screenshot-6.png" width="130" alt="Pro notifications" />
+</div>
+
+<div align="center">
+  <sub>
     Launch detail · Future launches · Mission info · Timeline & streams · Crew · Pro notifications
-  </figcaption>
-</figure>
+  </sub>
+</div>
 
 ---
 
@@ -175,29 +178,40 @@ sequenceDiagram
 
 The first tab always displays the chronologically nearest upcoming launch as a full detail view. `findNextLaunchByDate` selects the launch from the already-loaded upcoming list, so no additional list request is made on tab switch. Pull-to-refresh re-fetches the upcoming list, derives the new next launch ID, and fetches the detail if the ID has changed.
 
-<figure align="center">
-  <img src="images/screenshot-8.png" width="220" alt="Next launch detail" />
-  <figcaption>Next launch detail view</figcaption>
-</figure>
+<div align="center">
+  <img src="images/screenshot-8.png" width="220" />
+</div>
+
+<div align="center">
+  <sub>Next launch detail view</sub>
+</div>
 
 ### Future and Past Lists
 
 Paginated launch lists with bottom-sheet filter panels. Filters operate client-side against the already-fetched list — `selectFilteredUpcomingLaunches` applies selected agency and status IDs without triggering additional API calls. Filters are persisted across sessions. Both lists support pull-to-refresh.
 
-<figure align="center">
-  <img src="images/screenshot-9.png" width="220" alt="Future launch list" />
-  <img src="images/screenshot-10.png" width="220" alt="Past launch list" />
-  <figcaption>Future and past launch lists</figcaption>
-</figure>
+<div align="center">
+  <img src="images/screenshot-9.png" width="220" />
+  <img src="images/screenshot-10.png" width="220" />
+</div>
+
+<div align="center">
+  <sub>Future and past launch lists</sub>
+</div>
 
 ### Launch Detail
 
 The most visually complex screen: full-bleed hero image with a `LinearGradient` overlay, live countdown (or T-time for past launches), status pill, webcast links, mission description, crew section, vehicle specs, a Mapbox launch pad map, and a mission timeline. `LaunchDetailContainer` implements progressive rendering — it converts the list-level `Launch` object into a partial detail immediately on navigation, while skeleton components stand in for the detail-only sections (timeline, videos, updates) until the full `LaunchDetail` response arrives. There is no blank loading screen for launches.
 
-<figure align="center">
-  <img src="images/screenshot-7.png" width="220" alt="Launch detail skeleton" />
-  <figcaption>Progressive rendering — skeleton sections fill in as the detail response arrives</figcaption>
-</figure>
+<div align="center">
+  <img src="images/screenshot-7.png" width="220" />
+</div>
+
+<div align="center">
+  <sub>
+    Progressive rendering — skeleton sections fill in as the detail response arrives
+  </sub>
+</div>
 
 ### Launch Tracking
 
@@ -224,12 +238,17 @@ On press, `handleManualPress` checks subscription, ensures a device token exists
 
 Users configure agency and/or launch site filter rules in settings; the server monitors upcoming launches against these rules and automatically tracks matching ones. Auto-tracked launches show a sparkle icon in place of the standard track icon. Tapping an auto-tracked button routes to the Auto-Tracking settings screen rather than toggling, preventing accidental removal of server-managed tracking.
 
-<figure align="center">
-  <img src="images/screenshot-11.png" width="220" alt="Auto-Tracking" />
-  <img src="images/screenshot-12.png" width="220" alt="Auto-Tracking" />
-  <img src="images/screenshot-13.png" width="220" alt="Auto-Tracking" />
-  <figcaption>Auto-tracking configuration — agency and launch site filter rules</figcaption>
-</figure>
+<div align="center">
+  <img src="images/screenshot-11.png" width="220" />
+  <img src="images/screenshot-12.png" width="220" />
+  <img src="images/screenshot-13.png" width="220" />
+</div>
+
+<div align="center">
+  <sub>
+    Auto-tracking configuration — agency and launch site filter rules
+  </sub>
+</div>
 
 ### Notification Preferences
 
