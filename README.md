@@ -178,14 +178,18 @@ The first tab always displays the chronologically nearest upcoming launch as a f
 
 Paginated launch lists with bottom-sheet filter panels. Filters operate client-side against the already-fetched list — `selectFilteredUpcomingLaunches` applies selected agency and status IDs without triggering additional API calls. Filters are persisted across sessions. Both lists support pull-to-refresh.
 
-<img src="images/screenshot-9.png" width="220" alt="Future launch list" />
-<img src="images/screenshot-10.png" width="220" alt="Past launch list" />
+<p align="center">
+    <img src="images/screenshot-9.png" width="220" alt="Future launch list" />
+    <img src="images/screenshot-10.png" width="220" alt="Past launch list" />
+</p>
 
 ### Launch Detail
 
 The most visually complex screen: full-bleed hero image with a `LinearGradient` overlay, live countdown (or T-time for past launches), status pill, webcast links, mission description, crew section, vehicle specs, a Mapbox launch pad map, and a mission timeline. `LaunchDetailContainer` implements progressive rendering — it converts the list-level `Launch` object into a partial detail immediately on navigation, while skeleton components stand in for the detail-only sections (timeline, videos, updates) until the full `LaunchDetail` response arrives. There is no blank loading screen for launches.
 
-<img src="images/screenshot-7.png" width="220" alt="Launch detail" />
+<p align="center">
+    <img src="images/screenshot-7.png" width="220" alt="Launch detail" />
+</p>
 
 ### Launch Tracking
 
@@ -212,9 +216,11 @@ On press, `handleManualPress` checks subscription, ensures a device token exists
 
 Users configure agency and/or launch site filter rules in settings; the server monitors upcoming launches against these rules and automatically tracks matching ones. Auto-tracked launches show a sparkle icon in place of the standard track icon. Tapping an auto-tracked button routes to the Auto-Tracking settings screen rather than toggling, preventing accidental removal of server-managed tracking.
 
-<img src="images/screenshot-11.png" width="220" alt="Auto-Tracking" />
-<img src="images/screenshot-12.png" width="220" alt="Auto-Tracking" />
-<img src="images/screenshot-13.png" width="220" alt="Auto-Tracking" />
+<p align="center">
+    <img src="images/screenshot-11.png" width="220" alt="Auto-Tracking" />
+    <img src="images/screenshot-12.png" width="220" alt="Auto-Tracking" />
+    <img src="images/screenshot-13.png" width="220" alt="Auto-Tracking" />
+</p>
 
 ### Notification Preferences
 
